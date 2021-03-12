@@ -1,15 +1,11 @@
-import asyncio, json
+import asyncio
 
-from client import DiscordClient
-
-client = DiscordClient()
-
+from client import *
 from commands import *
-
-with open("config/config.json", "r") as f:
-  config = json.load(f)
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.gather(
-  client.start(config["discord-token"])
+  client.start(config["discord-token"]),
+  reminder_cycle(),
+  genshin_daily()
 ))

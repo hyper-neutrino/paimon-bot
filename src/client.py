@@ -1,69 +1,102 @@
-import discord, shlex, sys
+import discord, json, shlex, sys, time, traceback
 
-from errors import BotError
+from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import create_choice, create_option
+from errors import *
+
+with open("config/config.json", "r") as f:
+  config = json.load(f)
 
 class DiscordClient(discord.Client):
   def __init__(self):
     discord.Client.__init__(self, intents = discord.Intents.all())
-    self.commands = {}
+    self.reaction_handlers = []
+    self.message_handlers = []
+    self.edit_handlers = []
+    self.delete_handlers = []
+    self.startup_time = time.time()
+    self.reaction_handler = self.reaction_handlers.append
+    self.message_handler = self.message_handlers.append
+    self.edit_handler = self.edit_handlers.append
+    self.delete_handler = self.delete_handlers.append
   
-  async def on_error(self, event, *args, **kwargs):
-    error_type, error, traceback = sys.exc_info()
-    if isinstance(error, BotError):
-      print(args, kwargs)
+  async def dm(self, user, *a, **k):
+    try:
+      channel = user.dm_channel
+      if channel is None:
+        channel = await user.create_dm()
+      await channel.send(*a, **k)
+    except:
+      traceback.print_exc()
   
-  def register(self, category, usage, helptext):
-    if category:
-      if category not in self.commands:
-        self.commands[category] = []
-      self.commands[category].append(usage, helptext)
+  async def on_reaction_add(self, reaction, user):
+    for handler in self.reaction_handlers:
+      await handler(reaction, user)
   
-  def msg_match(self, match, category = "", usage = "", helptext = ""):
-    def inner(process):
-      self.register(category, usage, helptext)
-      @self.event
-      async def on_message(message):
-        try:
-          m = match(message)
-        except:
-          return
-        await process(m)
-    
-    return inner
+  async def on_reaction_remove(self, reaction, user):
+    for handler in self.reaction_handlers:
+      await handler(reaction, user)
   
-  def command(self, syntax = [], category = "", usage = "", helptext = "", please = True):
-    def inner(process):
-      self.register(category, usage, helptext)
-      @self.event
-      async def on_message(message):
-        try:
-          arguments = shlex.split(message)
-        except:
-          return
-        if please:
-          syntax = [("please", "pls")] + syntax
-        for item in syntax:
-          if arguments == []:
-            return
-          if isinstance(item, str) and arguments[0] != item or isinstance(item, tuple) and arguments[0] not in item:
-            return
-          arguments.pop(0)
-        args = []
-        kwargs = {}
-        keyword = None
-        for arg in arguments:
-          if arg.endswith(":") and len(arg) > 1:
-            if keyword:
-              raise BotError(f"Keyword `{keyword}` was not followed by an argument!")
-            keyword = arg[:-1]
-          else:
-            if keyword:
-              if keyword in kwargs:
-                raise BotError(f"Keyword `{keyword}` received multiple values!")
-              kwargs[keyword] = arg
-              keyword = None
-            else:
-              args.append(arg)
-        await process(*args, **kwargs)
-      
-    return inner
+  async def on_message(self, message):
+    for handler in self.message_handlers:
+      await handler(message)
+  
+  async def on_message_edit(self, before, after):
+    for handler in self.edit_handlers:
+      await handler(before, after)
+  
+  async def on_message_delete(self, message):
+    for handler in self.delete_handlers:
+      await handler(message)
+  
+  async def on_ready(self):
+    print("PAIMON has started")
+  
+  async def on_slash_command_error(self, ctx, ex):
+    if isinstance(ex, BotError):
+      try:
+        await ctx.respond(eat = True)
+      finally:
+        await ctx.send(ex.content, **ex.kwargs, hidden = True)
+    elif isinstance(ex, PublicBotError):
+      try:
+        await ctx.respond()
+      finally:
+        await send_embed_channel(ctx.channel, discord.Embed(
+          title = "Error",
+          description = ex.message
+        ), ctx.author)
+    else:
+      try:
+        await ctx.respond()
+      finally:
+        await send_embed_channel(ctx.channel, discord.Embed(
+          title = "Uncaught Exception",
+          description = f"```{str(ex)[:1994]}```"
+        ), ctx.author)
+        raise ex
+
+client = DiscordClient()
+slash = SlashCommand(client, sync_commands = True)
+
+# guilds = config["slash-command-guilds"]
+guilds = None
+
+async def send_embed_channel(channel, embed, author = None, **kwargs):
+  return await channel.send(embed = embed.set_footer(text = f"Requested by {author.display_name}", icon_url = author.avatar_url) if author else embed, **kwargs)
+
+async def send_embed(ctx, embed, eat = False, **kwargs):
+  try:
+    await ctx.respond(eat = eat)
+  except:
+    pass
+  return await ctx.send(embed = embed.set_footer(text = f"Requested by {ctx.author.display_name}", icon_url = ctx.author.avatar_url), **kwargs)
+
+def emoji(name, default = None):
+  for guild in client.guilds:
+    for emoji in guild.emojis:
+      if emoji.name == name:
+        return emoji
+  if default is None:
+    return ":" + name + ":"
+  return default
