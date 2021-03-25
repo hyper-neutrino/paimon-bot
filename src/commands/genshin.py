@@ -1,4 +1,4 @@
-import asyncio, datetime, time
+import asyncio, datetime, time, traceback
 
 from client import *
 from db import *
@@ -25,7 +25,10 @@ async def send_info(channel, item, author):
   )])
 async def genshin_info(ctx, item):
   await ctx.respond(True)
-  await send_info(ctx.channel, item, ctx.author)
+  try:
+    await send_info(ctx.channel, item, ctx.author)
+  except:
+    raise PublicBotError("Unexpected exception. Contact a developer.\n\n```" + traceback.format_exc() + "```")
 
 @slash.subcommand(base = "genshin", name = "watch", description = "Watch/unwatch genshin impact updates in this channel", guild_ids = guilds, options = [
   create_option(
@@ -130,7 +133,7 @@ async def genshin_daily():
   await asyncio.sleep(5)
   while True:
     n = datetime.datetime.now()
-    if n.hour >= 4:
+    if n.hour >= 5:
       for entry in watch_channels.query.filter_by(genshin = True).all():
         watch_time = n.year * 12 * 31 + n.month * 31 + n.day
         watch_entry = last_genshin_remind.query.filter_by(channel_id = entry.channel_id).first() or last_genshin_remind.add(channel_id = entry.channel_id)
@@ -141,6 +144,12 @@ async def genshin_daily():
           try:
             wd = n.weekday()
             await send_info(channel, "today", client.user)
+            for cid, cvalue in genshin_data["characters"].items():
+              if cvalue.get("birthmonth") == n.month and cvalue.get("birthdate") == n.day:
+                message = await channel.send(embed = discord.Embed(
+                  title = f"Happy Birthday {cvalue['name']}!",
+                  description = f"Today is {cvalue['name']} ({cvalue['title']})'s birthday."
+                ).set_thumbnail(url = emoji(cid).url))
           except BotError as e:
             await channel.send(e.message)
           except:

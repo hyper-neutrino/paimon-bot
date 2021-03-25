@@ -1,4 +1,4 @@
-import asyncio
+import asyncio, traceback
 
 from client import *
 from db import *

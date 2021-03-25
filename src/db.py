@@ -3,6 +3,8 @@ from client import *
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from sqlalchemy import func
+
 app = Flask("paimon")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = config["psql-url"]
@@ -82,6 +84,21 @@ class genshin_resin(db.Model, Helper):
   user_id = db.Column(db.BigInteger, primary_key = True, unique = True)
   reminder = db.Column(db.Integer)
   time = db.Column(db.Integer)
+
+class channel_links(db.Model, Helper):
+  src = db.Column(db.BigInteger, primary_key = True)
+  dest = db.Column(db.BigInteger)
+
+class starboards(db.Model, Helper):
+  guild_id = db.Column(db.BigInteger, primary_key = True, unique = True)
+  channel_id = db.Column(db.BigInteger, primary_key = True, unique = True)
+
+class starlinks(db.Model, Helper):
+  guild = db.Column(db.BigInteger, primary_key = True)
+  src_channel = db.Column(db.BigInteger)
+  src = db.Column(db.BigInteger, primary_key = True, unique = True)
+  dest_channel = db.Column(db.BigInteger)
+  dest = db.Column(db.BigInteger, primary_key = True, unique = True)
 
 db.create_all()
 

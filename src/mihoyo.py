@@ -28,7 +28,7 @@ def enemydropfilter(id, type, group = False):
 def char_reacts(characters):
   return [emoji("traveler" if cid.endswith("_mc") else cid) for cid, _ in characters]
 
-def enemy_reacts(msg, enemies):
+def enemy_reacts(enemies):
   return [emoji(edata["emoji"]) for _, edata in enemies]
 
 def name_item(item, type):
@@ -98,7 +98,7 @@ def daily_embed(key):
     return discord.Embed(
       title = "Sunday",
       description = "**All talent books and weapon ascension materials** are available for farming today; you may select the reward type you want before entering each Domain of Mastery and Forgery. If you wish to get details about these items, run `/genshin info`."
-    )
+    ), []
   else:
     embed = discord.Embed(
       title = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][key],
@@ -338,7 +338,7 @@ def info_embed(name):
       ).add_field(
         name = "Enemies",
         value = "\n".join(["- " + str(emoji(gdata["emoji"])) + " " + gdata["name"] + " (Group)" for gid, gdata in groups] + ["- " + str(emoji(edata["emoji"])) + " " + edata["name"] for eid, edata in enemies])
-      ).set_thumbnail(url = emoji(key + "3").url), char_reacts(characters), enemy_reacts(groups + enemies)
+      ).set_thumbnail(url = emoji(key + "3").url), char_reacts(characters) + enemy_reacts(groups + enemies)
   for key, value in genshin_data["enemy_emoji_map"].items():
     if re.match(key + "$", name):
       id = value["id"]

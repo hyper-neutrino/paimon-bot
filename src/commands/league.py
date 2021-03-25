@@ -17,10 +17,7 @@ def summoner_by_name(summoner_name):
   try:
     return watcher.summoner.by_name(lol_region, summoner_name)
   except:
-    if user.id == ctx.author.id:
-      raise BotError(f"Could not find {lol_region.upper()}/{summoner_name}! Please check your spelling and re-link yourself.")
-    else:
-      raise PublicBotError(f"Could not find {lol_region.upper()}/{summoner_name}! {user.mention} will need to check their spelling and re-link themselves.")
+    raise BotError("Could not find {lol_region.upper()}/{summoner_name}! Please check the spelling / link.")
 
 def get_game(summoner, index):
   try:
@@ -82,7 +79,7 @@ async def _lol_report(ctx, summoner_name, index):
 async def lol_report_player(ctx, user = None, index = None):
   user = user or ctx.author
   summoner_name = summoner_name_by_user(ctx, user)
-  _lol_report_player(ctx, summoner_name, index)
+  await _lol_report_player(ctx, summoner_name, index)
 
 @slash.subcommand(base = "lol", name = "name-report-player", description = "Report a game from a summoner (focus on the player details)", guild_ids = guilds, options = name_option + index_option)
 async def lol_name_report_player(ctx, name, index = None):

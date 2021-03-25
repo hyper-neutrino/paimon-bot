@@ -45,10 +45,10 @@ async def guild_stats(ctx):
     by_channel = {}
     by_user = {}
     users = [user.id for user in ctx.guild.members]
-    for channel in ctx.guild.channels:
-      by_channel[channel.mention] = 0
+    for channel in ctx.guild.text_channels:
       if private_channels.query.filter_by(channel_id = channel.id).count() > 0:
         continue
+      by_channel[channel.mention] = 0
       for user in users:
         count = messages.query.filter_by(channel_id = channel.id, author_id = user).count()
         by_channel[channel.mention] += count

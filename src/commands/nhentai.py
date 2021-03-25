@@ -99,9 +99,10 @@ async def nhentai_embed(ctx, nhid, force = None):
     required = True
   )])
 async def nhdownload(ctx, nhid):
+  ch = ctx.channel
   await ctx.respond(True)
   await ctx.send("Fetching your doujin! This may take a minute or two.", hidden = True)
-  async with ctx.channel.typing():
+  async with ch.typing():
     doujin, urls = nhentai(nhid, True)
     try:
       os.mkdir(f"/tmp/nhentai/{nhid}")
@@ -120,9 +121,9 @@ async def nhdownload(ctx, nhid):
     merger.close()
     try:
       with open(final_path, "rb") as f:
-        await ctx.channel.send(file = discord.File(fp = f, filename = f"[{nhid}] {doujin.title}.pdf"))
+        await ch.send(file = discord.File(fp = f, filename = f"[{nhid}] {doujin.title}.pdf"))
     except:
-      await send_embed_channel(ctx.channel, discord.Embed(
+      await send_embed_channel(ch, discord.Embed(
         title = f"[{nhid}] {doujin.title} {doujin.subtitle}",
         url = f"https://nhentai.net/g/{nhid}",
         description = f"The file is too large to upload; you can access it [here](https://dev.hyper-neutrino.xyz/nh/{nhid})"

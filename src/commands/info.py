@@ -47,7 +47,7 @@ async def user_info(ctx, user = None):
     inline = False
   ).add_field(
     name = "Messages sent",
-    value = str(messages.query.filter_by(author_id = user.id).count()),
+    value = str(messages.query.filter_by(guild_id = ctx.guild.id, author_id = user.id).count()),
     inline = False
   ).add_field(
     name = "ID",
