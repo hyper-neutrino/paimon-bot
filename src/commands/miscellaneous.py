@@ -452,7 +452,7 @@ async def ping_delete(message):
   if message.mention_everyone:
     mentions.append("@everyone/@here")
   if mentions:
-    await message.channel.send(embed = discord.Embed(description = "A message was deleted that mentioned " + english_list(mentions)))
+    await message.channel.send(embed = discord.Embed(description = f"A message from {message.author.mention} was deleted that mentioned {english_list(mentions)}"))
 
 @client.edit_handler
 async def ping_edit(before, after):
