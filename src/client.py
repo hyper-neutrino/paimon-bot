@@ -11,7 +11,7 @@ class FakeReaction:
   def __init__(self, emoji, message):
     self.emoji = emoji
     self.message = message
-  
+
   async def create(payload, emoji = -1):
     return FakeReaction(payload.emoji if emoji == -1 else emoji, await client.get_channel(payload.channel_id).fetch_message(payload.message_id))
 
@@ -32,7 +32,7 @@ class DiscordClient(discord.Client):
     self.message_handler = self.message_handlers.append
     self.edit_handler = self.edit_handlers.append
     self.delete_handler = self.delete_handlers.append
-  
+
   async def dm(self, user, *a, **k):
     try:
       channel = user.dm_channel
@@ -41,39 +41,39 @@ class DiscordClient(discord.Client):
       await channel.send(*a, **k)
     except:
       traceback.print_exc()
-  
+
   async def on_raw_reaction_add(self, payload):
     for handler in self.reaction_add_handlers:
       await handler(await FakeReaction.create(payload), self.get_user(payload.user_id))
-  
+
   async def on_raw_reaction_remove(self, payload):
     for handler in self.reaction_rm_handlers:
       await handler(await FakeReaction.create(payload), self.get_user(payload.user_id))
-  
+
   async def on_raw_reaction_clear_emoji(self, payload):
     for handler in self.reaction_rm_handlers:
       await handler(await FakeReaction.create(payload), self.get_user(payload.user_id))
-  
+
   async def on_raw_reaction_clear(self, payload):
     for handler in self.reaction_clear_handlers:
       await handler(await FakeReaction.create(payload, None))
-  
+
   async def on_message(self, message):
     for handler in self.message_handlers:
       await handler(message)
-  
+
   async def on_message_edit(self, before, after):
     for handler in self.edit_handlers:
       await handler(before, after)
-  
+
   async def on_message_delete(self, message):
     for handler in self.delete_handlers:
       await handler(message)
-  
+
   async def on_bulk_message_delete(self, messages):
     for message in messages:
       await self.on_message_delete(message)
-  
+
   async def on_ready(self):
     print("PAIMON has started")
 
