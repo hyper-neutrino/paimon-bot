@@ -52,9 +52,16 @@ async def starboard(ctx, channel = None):
     description = "The message to say",
     option_type = 3,
     required = True,
+  ),
+  create_option(
+    name = "delay",
+    description = "How long to wait before sending the message (default 0) in seconds",
+    option_type = 4,
+    required = False
   )])
-async def say(ctx, message):
+async def say(ctx, message, delay = 0):
   await ctx.respond(True)
+  await asyncio.sleep(delay)
   await ctx.send(message)
 
 @slash.slash(name = "blame", description = "Blame a random user", guild_ids = guilds)
