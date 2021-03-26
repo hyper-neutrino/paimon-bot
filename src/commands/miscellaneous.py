@@ -541,3 +541,13 @@ async def unstar(reaction, user):
 @client.reaction_clear
 async def unstar_prime(reaction):
   await unstar_message(reaction.message)
+
+@client.message_handler
+async def nadeko_timecheck(message):
+  if message.content == "🔄 https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us" and message.author.id == 793167502309064706:
+    now = datetime.datetime.now()
+    expected = datetime.datetime(now.year, now.month, now.day, 12, 0, 0)
+    if now.hour < 12:
+      await message.reply(f"You are {(expected - now).seconds} seconds early!")
+    else:
+      await message.reply(f"You are {(now - expected).seconds} seconds late!")
