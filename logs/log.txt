@@ -1,0 +1,218 @@
+2021-04-12 23:14:59 --- NEW LOGIN ---
+2021-04-12 23:15:20 --- NEW LOGIN ---
+2021-04-12 23:15:39 Credidentials stored !
+2021-04-12 23:15:39 Logging to SE - OK
+2021-04-12 23:15:39 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:15:45 --- NEW LOGIN ---
+2021-04-12 23:15:47 Credidentials retrieved successfully
+2021-04-12 23:15:47 Logging to SE - OK
+2021-04-12 23:15:48 Loading SE profile - OK
+2021-04-12 23:15:49 Got chat fkey : af41be6b782edad17e26b5ffbde5793a
+2021-04-12 23:15:49 Login to the SE chat successful
+2021-04-12 23:20:37 --- NEW LOGIN ---
+2021-04-12 23:20:40 Credidentials retrieved successfully
+2021-04-12 23:20:40 Logging to SE - OK
+2021-04-12 23:20:41 Loading SE profile - OK
+2021-04-12 23:20:42 Got chat fkey : 611d41d70f376f01dbd1278300861b16
+2021-04-12 23:20:42 Login to the SE chat successful
+2021-04-12 23:20:54 --- NEW LOGIN ---
+2021-04-12 23:20:55 Credidentials retrieved successfully
+2021-04-12 23:20:56 Logging to SE - OK
+2021-04-12 23:20:56 Loading SE profile - OK
+2021-04-12 23:20:57 Got chat fkey : f555d2fca53a09555d8a21b11752fc2f
+2021-04-12 23:20:57 Login to the SE chat successful
+2021-04-12 23:20:59 Got activity {'t': 123421416, 'd': -1494862641}
+2021-04-12 23:21:08 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618284067, 'content': 'test', 'id': 123421417, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631081}], 't': 123421417, 'd': 1}
+2021-04-12 23:23:11 Got activity {'t': 123421428, 'd': 1}
+2021-04-12 23:26:25 Got activity {'t': 123421448, 'd': 1}
+2021-04-12 23:29:29 Got activity {'t': 123421461, 'd': 2}
+2021-04-12 23:30:04 Got activity {'t': 123421527, 'd': 52}
+2021-04-12 23:30:51 Got activity {'t': 123421533, 'd': 1}
+2021-04-12 23:31:20 Got activity {'t': 123421541, 'd': 1}
+2021-04-12 23:31:31 Got activity {'t': 123421544, 'd': 1}
+2021-04-12 23:31:42 Got activity {'t': 123421546, 'd': 2}
+2021-04-12 23:31:54 --- NEW LOGIN ---
+2021-04-12 23:32:01 Credidentials retrieved successfully
+2021-04-12 23:32:01 Logging to SE - OK
+2021-04-12 23:32:02 Loading SE profile - OK
+2021-04-12 23:32:03 Got chat fkey : 3bdea70aae6b2bff10daa6ad973b6be4
+2021-04-12 23:32:03 Login to the SE chat successful
+2021-04-12 23:32:04 Got activity {'t': 123421550, 'd': -1494863174}
+2021-04-12 23:32:06 Got activity {'t': 123421551, 'd': 1}
+2021-04-12 23:33:05 Got activity {'t': 123421558, 'd': 1}
+2021-04-12 23:33:07 Got activity {'t': 123421559, 'd': 1}
+2021-04-12 23:34:38 Got activity {'t': 123421573, 'd': 1}
+2021-04-12 23:35:44 --- NEW LOGIN ---
+2021-04-12 23:35:45 Credidentials retrieved successfully
+2021-04-12 23:35:45 Logging to SE - OK
+2021-04-12 23:35:46 Loading SE profile - OK
+2021-04-12 23:35:48 Got chat fkey : 3c1f65057b3309c78458c505ca6629ab
+2021-04-12 23:35:48 Login to the SE chat successful
+2021-04-12 23:35:48 Got activity {'t': 123421599, 'd': -1494863349}
+2021-04-12 23:35:52 discord test
+2021-04-12 23:35:53 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618284952, 'content': 'discord test', 'id': 123421601, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631135}], 't': 123421601, 'd': 2}
+2021-04-12 23:36:56 Got activity {'t': 123421610, 'd': 1}
+2021-04-12 23:37:57 Got activity {'t': 123421618, 'd': 2}
+2021-04-12 23:38:03 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285083, 'content': 'test', 'id': 123421626, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631148}], 't': 123421626, 'd': 8}
+2021-04-12 23:39:05 Got activity {'t': 123421630, 'd': 1}
+2021-04-12 23:39:23 --- NEW LOGIN ---
+2021-04-12 23:39:27 --- NEW LOGIN ---
+2021-04-12 23:39:28 Credidentials retrieved successfully
+2021-04-12 23:39:28 Logging to SE - OK
+2021-04-12 23:39:29 Loading SE profile - OK
+2021-04-12 23:39:30 Got chat fkey : 0256075061b0a41ff3dd868c0082d884
+2021-04-12 23:39:30 Login to the SE chat successful
+2021-04-12 23:39:32 Got activity {'t': 123421636, 'd': -1494863534}
+2021-04-12 23:39:36 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285175, 'content': 'test', 'id': 123421637, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631157}], 't': 123421637, 'd': 1}
+2021-04-12 23:39:59 --- NEW LOGIN ---
+2021-04-12 23:40:00 Credidentials retrieved successfully
+2021-04-12 23:40:01 Logging to SE - OK
+2021-04-12 23:40:01 Loading SE profile - OK
+2021-04-12 23:40:02 Got chat fkey : 4c06c3343954b5d5c2839d60ea2e3e86
+2021-04-12 23:40:02 Login to the SE chat successful
+2021-04-12 23:40:04 Got activity {'t': 123421701, 'd': -1494863502}
+2021-04-12 23:40:07 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285207, 'content': 'hello', 'id': 123421702, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631163}], 't': 123421702, 'd': 1}
+2021-04-12 23:42:08 --- NEW LOGIN ---
+2021-04-12 23:42:10 Credidentials retrieved successfully
+2021-04-12 23:42:10 Logging to SE - OK
+2021-04-12 23:42:11 Loading SE profile - OK
+2021-04-12 23:42:12 Got chat fkey : 1cb1c90e9caa01db9f6ffb05c5a0be68
+2021-04-12 23:42:12 Login to the SE chat successful
+2021-04-12 23:42:12 Got activity {'t': 123421726, 'd': -1494863606}
+2021-04-12 23:42:17 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285337, 'content': 'test', 'id': 123421727, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631178}], 't': 123421727, 'd': 1}
+2021-04-12 23:43:26 --- NEW LOGIN ---
+2021-04-12 23:43:27 Credidentials retrieved successfully
+2021-04-12 23:43:28 Logging to SE - OK
+2021-04-12 23:43:28 Caught by CAPTCHA
+2021-04-12 23:43:28 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:43:34 --- NEW LOGIN ---
+2021-04-12 23:43:35 Credidentials retrieved successfully
+2021-04-12 23:43:35 Logging to SE - OK
+2021-04-12 23:43:36 Caught by CAPTCHA
+2021-04-12 23:43:36 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:44:12 --- NEW LOGIN ---
+2021-04-12 23:44:13 Credidentials retrieved successfully
+2021-04-12 23:44:14 Logging to SE - OK
+2021-04-12 23:44:14 Caught by CAPTCHA
+2021-04-12 23:44:14 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:45:16 --- NEW LOGIN ---
+2021-04-12 23:45:17 Credidentials retrieved successfully
+2021-04-12 23:45:18 Logging to SE - OK
+2021-04-12 23:45:18 Loading SE profile - OK
+2021-04-12 23:45:20 Got chat fkey : 167e8bb5c28ba60b05176d1a8f22d0f1
+2021-04-12 23:45:20 Login to the SE chat successful
+2021-04-12 23:45:21 Got activity {'t': 123421796, 'd': -1494863724}
+2021-04-12 23:45:24 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285523, 'content': 'test', 'id': 123421798, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631189}], 't': 123421798, 'd': 1}
+2021-04-12 23:46:08 --- NEW LOGIN ---
+2021-04-12 23:46:10 Credidentials retrieved successfully
+2021-04-12 23:46:10 Logging to SE - OK
+2021-04-12 23:46:11 Loading SE profile - OK
+2021-04-12 23:46:12 Got chat fkey : 9fd819c3bbcbb574b0e9079c7473a9d0
+2021-04-12 23:46:12 Login to the SE chat successful
+2021-04-12 23:46:13 Got activity {'t': 123421813, 'd': -1494863759}
+2021-04-12 23:46:17 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285577, 'content': 'test', 'id': 123421814, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631198}], 't': 123421814, 'd': 1}
+2021-04-12 23:47:34 --- NEW LOGIN ---
+2021-04-12 23:47:35 Credidentials retrieved successfully
+2021-04-12 23:47:35 Logging to SE - OK
+2021-04-12 23:47:36 Loading SE profile - OK
+2021-04-12 23:47:37 Got chat fkey : 614a3ea4d2a5603726f96f53ce6aee35
+2021-04-12 23:47:37 Login to the SE chat successful
+2021-04-12 23:47:38 Got activity {'t': 123421823, 'd': -1494863834}
+2021-04-12 23:47:41 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285660, 'content': 'i hate async', 'id': 123421827, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631208}], 't': 123421827, 'd': 2}
+2021-04-12 23:49:16 --- NEW LOGIN ---
+2021-04-12 23:49:19 Credidentials retrieved successfully
+2021-04-12 23:49:19 Logging to SE - OK
+2021-04-12 23:49:19 Caught by CAPTCHA
+2021-04-12 23:49:19 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:49:46 --- NEW LOGIN ---
+2021-04-12 23:49:47 Credidentials retrieved successfully
+2021-04-12 23:49:48 Logging to SE - OK
+2021-04-12 23:49:48 Caught by CAPTCHA
+2021-04-12 23:49:48 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:50:24 --- NEW LOGIN ---
+2021-04-12 23:50:25 Credidentials retrieved successfully
+2021-04-12 23:50:25 Logging to SE - OK
+2021-04-12 23:50:26 Loading SE profile - OK
+2021-04-12 23:50:27 Got chat fkey : 1d7fd5d1faa578d00c0af6185326d2db
+2021-04-12 23:50:27 Login to the SE chat successful
+2021-04-12 23:50:28 Got activity {'t': 123421931, 'd': -1494863896}
+2021-04-12 23:50:31 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285831, 'content': 'test', 'id': 123421933, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631232}], 't': 123421933, 'd': 2}
+2021-04-12 23:51:41 --- NEW LOGIN ---
+2021-04-12 23:51:42 Credidentials retrieved successfully
+2021-04-12 23:51:42 Logging to SE - OK
+2021-04-12 23:51:43 Loading SE profile - OK
+2021-04-12 23:51:44 Got chat fkey : aeb2d9a22cb9f10ff16ac0d36f31b873
+2021-04-12 23:51:44 Login to the SE chat successful
+2021-04-12 23:51:46 Got activity {'t': 123421952, 'd': -1494863952}
+2021-04-12 23:51:49 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285908, 'content': 'hello', 'id': 123421953, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631248}], 't': 123421953, 'd': 1}
+2021-04-12 23:51:55 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285913, 'content': 'FINALLY', 'id': 123421955, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631249}], 't': 123421955, 'd': 1}
+2021-04-12 23:51:56 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285916, 'content': 'cool', 'id': 123421958, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631251}], 't': 123421958, 'd': 3}
+2021-04-12 23:51:58 Got activity {'t': 123421959, 'd': 1}
+2021-04-12 23:52:04 discord test
+2021-04-12 23:52:07 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285924, 'content': 'discord test', 'id': 123421962, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631254}], 't': 123421964, 'd': 3}
+2021-04-12 23:52:09 Got activity {'t': 123421965, 'd': 1}
+2021-04-12 23:52:17 kind of laggy but
+2021-04-12 23:52:18 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285937, 'content': 'kind of laggy but', 'id': 123421967, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631259}], 't': 123421967, 'd': 1}
+2021-04-12 23:52:18 ¯\_(ツ)_/¯
+2021-04-12 23:52:22 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618285941, 'content': '&#175;_(ツ)_/&#175;', 'id': 123421968, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631260}], 't': 123421968, 'd': 1}
+2021-04-12 23:53:46 --- NEW LOGIN ---
+2021-04-12 23:53:50 Credidentials retrieved successfully
+2021-04-12 23:53:50 Logging to SE - OK
+2021-04-12 23:53:51 Loading SE profile - OK
+2021-04-12 23:53:52 Got chat fkey : 445ef6ebe7a1666ec6e00cf361d7ada5
+2021-04-12 23:53:52 Login to the SE chat successful
+2021-04-12 23:53:54 Got activity {'t': 123421982, 'd': -1494864051}
+2021-04-12 23:53:54 Got activity {'t': 123421982, 'd': -1494864050}
+2021-04-12 23:54:09 Got activity {'t': 123421987, 'd': 2}
+2021-04-12 23:54:10 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618286049, 'content': 'man python&#39;s async is really painful to deal with sometimes lol', 'id': 123421987, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 240, 'room_name': 'The Nineteenth Byte', 'message_id': 57631270}], 't': 123421987, 'd': 1}
+2021-04-12 23:54:43 --- NEW LOGIN ---
+2021-04-12 23:55:39 Credidentials retrieved successfully
+2021-04-12 23:55:39 Logging to SE - OK
+2021-04-12 23:55:40 Loading SE profile - OK
+2021-04-12 23:55:41 Got chat fkey : 093240d883830797c51e3a8933fef6d0
+2021-04-12 23:55:41 Login to the SE chat successful
+2021-04-12 23:55:42 Got activity {'t': 123422013, 'd': -1494864128}
+2021-04-12 23:55:42 Got activity {'t': 123422013, 'd': -1494864129}
+2021-04-12 23:55:49 i finally just finished setting up a forwarding thing between discord and stack exchange chat and it took a while cuz discord has everything as async and the chatbot seems to run in a different thread so i can't even use `asyncio.get_event_loop()` or smth like that lol
+2021-04-12 23:55:50 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618286150, 'content': 'i finally just finished setting up a forwarding thing between discord and stack exchange chat and it took a while cuz discord has everything as async and the chatbot seems to run in a different thread so i can&#39;t even use <code>asyncio.get_event_loop()</code> or smth like that lol', 'id': 123422015, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 240, 'room_name': 'The Nineteenth Byte', 'message_id': 57631279}], 't': 123422015, 'd': 1}
+2021-04-12 23:55:51 Got activity {'t': 123422015, 'd': 1}
+2021-04-12 23:56:25 --- NEW LOGIN ---
+2021-04-12 23:56:27 Credidentials retrieved successfully
+2021-04-12 23:56:27 Logging to SE - OK
+2021-04-12 23:56:28 Caught by CAPTCHA
+2021-04-12 23:56:28 Loading SE profile - FAILURE -  aborting
+2021-04-12 23:56:49 --- NEW LOGIN ---
+2021-04-12 23:56:50 Credidentials retrieved successfully
+2021-04-12 23:56:51 Logging to SE - OK
+2021-04-12 23:56:51 Loading SE profile - OK
+2021-04-12 23:56:52 Got chat fkey : 9f8c7bf62ea3aa7f78ec4448b377ea33
+2021-04-12 23:56:52 Login to the SE chat successful
+2021-04-12 23:56:54 Got activity {'t': 123422025, 'd': -1494864188}
+2021-04-12 23:56:54 Got activity {'t': 123422025, 'd': -1494864187}
+2021-04-12 23:57:16 hello
+2021-04-12 23:57:16 Got activity {'t': 123422026, 'd': 1}
+2021-04-12 23:57:17 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618286236, 'content': 'hello', 'id': 123422026, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631287}], 't': 123422026, 'd': 1}
+2021-04-12 23:57:37 Got activity {'e': [{'event_type': 4, 'time_stamp': 1618286257, 'id': 123422031, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422031, 'd': 1}
+2021-04-12 23:57:37 Event: User left
+2021-04-12 23:57:37 Event details: {'event_type': 4, 'time_stamp': 1618286257, 'id': 123422031, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}
+2021-04-12 23:57:38 Got activity {'e': [{'event_type': 4, 'time_stamp': 1618286257, 'id': 123422031, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422031, 'd': 1}
+2021-04-12 23:57:38 Event: User left
+2021-04-12 23:57:38 Event details: {'event_type': 4, 'time_stamp': 1618286257, 'id': 123422031, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}
+2021-04-12 23:57:42 hello
+2021-04-12 23:57:43 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618286262, 'content': 'hello', 'id': 123422032, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631291}], 't': 123422032, 'd': 1}
+2021-04-12 23:57:57 test
+2021-04-12 23:57:59 Got activity {'e': [{'event_type': 1, 'time_stamp': 1618286277, 'content': 'test', 'id': 123422034, 'user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox', 'message_id': 57631292}], 't': 123422034, 'd': 1}
+2021-04-12 23:57:59 Got activity {'t': 123422035, 'd': 1}
+2021-04-12 23:58:00 Got activity {'e': [{'event_type': 3, 'time_stamp': 1618286279, 'id': 123422035, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422035, 'd': 1}
+2021-04-12 23:58:00 Event: User joined
+2021-04-12 23:58:00 Event details: {'event_type': 3, 'time_stamp': 1618286279, 'id': 123422035, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}
+2021-04-12 23:58:14 Got activity {'e': [{'event_type': 4, 'time_stamp': 1618286293, 'id': 123422036, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422036, 'd': 1}
+2021-04-12 23:58:14 Event: User left
+2021-04-12 23:58:14 Event details: {'event_type': 4, 'time_stamp': 1618286293, 'id': 123422036, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}
+2021-04-12 23:58:14 Got activity {'e': [{'event_type': 4, 'time_stamp': 1618286293, 'id': 123422036, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422036, 'd': 1}
+2021-04-12 23:58:14 Event: User left
+2021-04-12 23:58:14 Event details: {'event_type': 4, 'time_stamp': 1618286293, 'id': 123422036, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}
+2021-04-12 23:59:18 Got activity {'t': 123422045, 'd': 1}
+2021-04-12 23:59:19 Got activity {'e': [{'event_type': 3, 'time_stamp': 1618286357, 'id': 123422045, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}], 't': 123422045, 'd': 1}
+2021-04-12 23:59:19 Event: User joined
+2021-04-12 23:59:19 Event details: {'event_type': 3, 'time_stamp': 1618286357, 'id': 123422045, 'user_id': 281362, 'target_user_id': 281362, 'user_name': 'hyper-neutrino', 'room_id': 1, 'room_name': 'Sandbox'}

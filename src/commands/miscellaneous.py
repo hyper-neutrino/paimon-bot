@@ -1,4 +1,4 @@
-import asyncio, datetime, random, re, requests, sys, time
+import asyncio, datetime, inspect, random, re, requests, sys, time
 
 from client import *
 from db import *
@@ -210,10 +210,20 @@ async def leaderboard(ctx, category):
 async def run_eval(ctx, query):
   if ctx.author.id != config["bot-owner"]:
     raise BotError("You must be the bot owner to use this command!")
+  query = query.strip("`")
+
   try:
-    await ctx.send("```python\n%s```" % cap(str(eval(query)).replace("`", "\\`"), 1987))
+    result = eval(query)
   except:
-    await ctx.send("```python\n%s```" % cap(traceback.format_exc().replace("`", "\\`"), 1987))
+    await ctx.send("```python\n%s```" % cap(query + "\n\n" + traceback.format_exc().replace("`", "\\`"), 1987))
+
+  if inspect.isawaitable(result):
+    try:
+      await ctx.send("```python\n%s```" % cap(query + "\n\n" + str(await result).replace("`", "\\`"), 1987))
+    except:
+      await ctx.send("```python\n%s```" % cap(query + "\n\n" + traceback.format_exc().replace("`", "\\`"), 1987))
+  else:
+    await ctx.send("```python\n%s```" % cap(query + "\n\n" + str(result).replace("`", "\\`"), 1987))
 
 @slash.slash(name = "query", description = "Make a database query", guild_ids = guilds, options = [
   create_option(
@@ -249,8 +259,8 @@ async def run_query(ctx, query):
     description = "```" + (" | ".join(key.ljust(width) for key, width in zip(keys, cwidth)) + "\n" + "-" * sum(cwidth) + "---" * (len(cwidth) - 1) + "\n" + "\n".join(" | ".join(str(val).ljust(width) for val, width in zip(row, cwidth)) for row in rows))[:2042] + "```"
   ))
 
-p = [2, 13, 8, 12, 10, 6, 9, 7, 5, 1, 11, 4, 14, 3, 0]
-q = [14, 9, 0, 13, 11, 8, 5, 7, 2, 6, 4, 10, 3, 1, 12]
+p = [-1, 2, 13, 8, 12, 10, 6, 9, 7, 5, 1, 11, 4, 14, 3, 0]
+q = [-1, 14, 9, 0, 13, 11, 8, 5, 7, 2, 6, 4, 10, 3, 1, 12]
 
 @slash.slash(name = "scramble", description = "Scramble", guild_ids = guilds, options = [
   create_option(
@@ -265,8 +275,8 @@ q = [14, 9, 0, 13, 11, 8, 5, 7, 2, 6, 4, 10, 3, 1, 12]
   )])
 async def scramble(ctx, direction):
   await ctx.respond(True)
-  d = [channel.name for channel in list(ctx.guild.text_channels)[:15]]
-  k = [d[i] for i in (p if direction == "forward" else q)]
+  d = [channel.name for channel in list(ctx.guild.text_channels)[:16]]
+  k = [d[i + 1] for i in (p if direction == "forward" else q)]
   for c, n in zip(ctx.guild.text_channels, k):
     await c.edit(name = n)
   await ctx.send("OK!", hidden = True)
@@ -378,26 +388,26 @@ async def flatten(iterator, limit):
   )])
 async def command_move(ctx, selector, selector_value, channel, reverse_selector = "exclude", reverse_selector_value = 0, threshold = 500):
   if ctx.author.id != config["bot-owner"]:
-    raise BotError("Only the bot user may use this command!")
+    raise BotError("Only the bot owner may use this command!")
   await ctx.send("Moving!", hidden = True)
+  ch = ctx.channel
+  au = ctx.author
   selector_value = int(selector_value)
   reverse_selector_value = int(reverse_selector_value)
   if selector == "after":
     if reverse_selector == "before":
-      messages = await flatten(ctx.channel.history(after = await ctx.channel.fetch_message(selector_value), before = await ctx.channel.fetch_message(reverse_selector_value)), threshold)
+      messages = await flatten(ch.history(after = await ch.fetch_message(selector_value), before = await ch.fetch_message(reverse_selector_value)), threshold)
     else:
-      messages = await flatten(ctx.channel.history(after = await ctx.channel.fetch_message(selector_value)), threshold)
+      messages = await flatten(ch.history(after = await ch.fetch_message(selector_value)), threshold)
       if reverse_selector_value:
         messages = messages[:-reverse_selector_value]
   else:
     if reverse_selector == "before":
-      messages = (await flatten(ctx.channel.history(limit = selector_value, before = await ctx.channel.fetch_message(reverse_selector_value)), threshold))[::-1]
+      messages = (await flatten(channel.history(limit = selector_value, before = await ch.fetch_message(reverse_selector_value)), threshold))[::-1]
     else:
-      messages = (await flatten(ctx.channel.history(limit = selector_value + reverse_selector_value), threshold))[::-1]
+      messages = (await flatten(ch.history(limit = selector_value + reverse_selector_value), threshold))[::-1]
       if reverse_selector_value:
         messages = messages[:-reverse_selector_value]
-  ch = ctx.channel
-  au = ctx.author
   ct = len(messages)
   prompt = await ch.send(embed = discord.Embed().add_field(
     name = f"Confirm moving {ct} messages to {channel.name}?",
@@ -542,12 +552,18 @@ async def unstar(reaction, user):
 async def unstar_prime(reaction):
   await unstar_message(reaction.message)
 
-@client.message_handler
-async def nadeko_timecheck(message):
-  if message.content == "🔄 https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us" and message.author.id == 793167502309064706:
-    now = datetime.datetime.now()
-    expected = datetime.datetime(now.year, now.month, now.day, 12, 0, 0)
-    if now.hour < 12:
-      await message.reply(f"You are {(expected - now).seconds} seconds early!")
-    else:
-      await message.reply(f"You are {(now - expected).seconds} seconds late!")
+@slash.slash(name = "kick", description = "Remove a bot from the guild", guild_ids = guilds, options = [
+  create_option(
+    name = "bot",
+    description = "The bot to remove",
+    option_type = 6,
+    required = True
+  )])
+async def kick(ctx, member):
+  if member.bot:
+    await member.kick()
+    await send_embed(ctx, discord.Embed(
+      description = f"{ctx.author.mention} removed {member.mention} from this guild!"
+    ))
+  else:
+    raise PublicBotError(f"{ctx.author.mention} attempted to kick {member.mention} but they are not a bot!")

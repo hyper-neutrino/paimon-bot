@@ -230,3 +230,66 @@ async def lol_item(ctx, item_name):
   ).set_thumbnail(
     url = f"http://ddragon.leagueoflegends.com/cdn/{lol_version}/img/item/{item['id']}.png"
   ), True)
+
+teams = []
+player_team = {}
+positions = {}
+@slash.slash(name = "clash", description = "Manage a clash team's swaps (held in temporary memory)", guild_ids = guilds, options = [create_option(name = f"player{x}", description = f"Player {x}", option_type = 6, required = True) for x in range(1, 6)])
+async def clash_command(ctx, *players):
+  ch = ctx.channel
+  players = [player.id for player in players]
+  overlap = {player for player in players if player in player_team}
+  if overlap:
+    raise BotError(english_list(f"<@{player}>" for player in overlap) + " " + ("is" if len(overlap) == 1 else "are") + " already in team formation!")
+  index = len(teams)
+  for player in players:
+    player_team[player] = index
+  teams.append({})
+  await send_embed(ctx, discord.Embed(
+    description = "Clash team formation has started for " + english_list(f"<@{player}>" for player in players) + ". Please mention the user whose champion you picked once you lock in (including if you pick for yourself)."
+  ))
+  i = 0
+  while i < 5:
+    message = await client.wait_for("message", check = lambda m: m.channel.id == ch.id and m.author.id in players and any(member.id in players for member in m.mentions) and len(m.mentions) == 1)
+    s = message.author.id
+    d = message.mentions[0].id
+    k = [p for p in teams[index] if teams[index][p] == d]
+    if k:
+      await ch.send(embed = discord.Embed(
+        description = f"<@{d}> was already declared by <@{k[0]}>. They will need to correct their pick if that information is incorrect!"
+      ))
+      await message.add_reaction("❌")
+    elif s in teams[index] and not k:
+      await ch.send(embed = discord.Embed(
+        description = f"<@{s}>, you already declared your pick for <@{teams[index][s]}>. I've updated your pick; please verify that this information is correct!"
+      ))
+      teams[index][s] = d
+      await message.add_reaction("✅")
+      await message.add_reaction(["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"][positions[s]])
+    else:
+      teams[index][s] = d
+      await message.add_reaction("✅")
+      await message.add_reaction(["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"][i])
+      positions[s] = i
+      i += 1
+  await ch.send(embed = discord.Embed(
+    description = "All lock-ins have been declared! Please send `confirm` to show the swaps."
+  ))
+  await client.wait_for("message", check = lambda m: m.channel.id == ch.id and m.content == "confirm")
+  a = teams[index]
+  swaps = []
+  while True:
+    a = {x: a[x] for x in a if a[x] != x}
+    if not a: break
+    p = list(a)[0]
+    swaps.append((p, a[p]))
+    k = a[p]
+    a[p] = a[a[p]]
+    del a[k]
+  await ch.send(embed = discord.Embed(
+    title = "Swaps (the person on the left requests the swap)",
+    description = "\n".join(f"<@{a}> ↔️ <@{b}>" for a, b in swaps) or "No swaps are needed. GLHF!"
+  ))
+  for p in players:
+    del player_team[p]
+    del positions[p]

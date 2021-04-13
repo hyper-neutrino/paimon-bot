@@ -202,9 +202,10 @@ def info_embed(name):
       ).add_field(
         name = "Talent Ascension Materials",
         value = "- " + genshin_data["talent_books"][value["talent_book"]]["category_name"] + " (" + emojilist(value["talent_book"], 3, "") + ")" + "\n" +
-                "- " + genshin_data["general_ascension"][value["talent_common"]]["category_name"] + " (" + emojilist(value["talent_common"], 3, "") + ")" + "\n",
+                "- " + genshin_data["general_ascension"][value["talent_common"]]["category_name"] + " (" + emojilist(value["talent_common"], 3, "") + ")" + "\n" +
+                "- " + genshin_data["talent_boss"][value["weekly"]]["name"] + "(" + str(emoji(value["weekly"])) + ")",
         inline = False
-      ).set_thumbnail(url = emoji(key).url), [emoji(value["region"]), emoji(value["element"]), emoji(value["weapon"]), emoji(value["element"] + "_chunk"), emoji(value["boss_drop"]), emoji(value["specialty"]), emoji(value["talent_book"] + "2"), emoji(value["talent_common"] + "3"), emoji(value["ascension"] + "3")]
+      ).set_thumbnail(url = emoji(key).url), [emoji(value["region"]), emoji(value["element"]), emoji(value["weapon"]), emoji(value["element"] + "_chunk"), emoji(value["boss_drop"]), emoji(value["specialty"]), emoji(value["talent_book"] + "2"), emoji(value["talent_common"] + "3"), emoji(value["ascension"] + "3"), emoji(value["weekly"])]
   for key, value in genshin_data["elements"].items():
     if key == name:
       characters = charfilter("element", key)
