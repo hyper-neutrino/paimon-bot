@@ -24,7 +24,6 @@ async def send_info(channel, item, author):
     required = True
   )])
 async def genshin_info(ctx, item):
-  await ctx.respond(True)
   try:
     await send_info(ctx.channel, item, ctx.author)
   except:
@@ -72,7 +71,6 @@ async def command_genshin_resin(ctx, operation, value = None):
     if value is None:
       if entry:
         genshin_resin.remove(entry)
-      await ctx.respond(True)
       await ctx.send("Cleared your resin data including any present reminders!", hidden = True)
     elif 0 <= value <= 160:
       new_time = time.time() - 8 * 60 * value
@@ -84,14 +82,12 @@ async def command_genshin_resin(ctx, operation, value = None):
       reminder_message = ""
       if entry.reminder:
         reminder_message = f" Your existing reminder for {entry.reminder} resin will happen in {time_hm(new_time + 8 * 60 * entry.reminder - time.time())}."
-      await ctx.respond(True)
       await ctx.send(f"Set your resin data to {value} resin!" + reminder_message, hidden = True)
     else:
       raise BotError("Resin must be in the range [0, 160]!")
   elif operation == "remind":
     entry = genshin_resin.query.filter_by(user_id = ctx.author.id).first()
     if entry:
-      await ctx.respond(True)
       if value is None:
         entry.reminder = 0
         await ctx.send("Cleared your resin reminder!", hidden = True)
@@ -108,7 +104,6 @@ async def command_genshin_resin(ctx, operation, value = None):
   elif operation == "now":
     entry = genshin_resin.query.filter_by(user_id = ctx.author.id).first()
     if entry:
-      await ctx.respond(True)
       await ctx.send(f"You currently have {min(int((time.time() - entry.time) / 60 / 8), 160)} resin!" + (f" I will remind you when you reach {entry.reminder} resin (in {time_hm(entry.time + 8 * 60 * entry.reminder - time.time())})." if entry.reminder else ""), hidden = True)
 
 @client.reaction_handler

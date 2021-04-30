@@ -79,27 +79,18 @@ class DiscordClient(discord.Client):
 
   async def on_slash_command_error(self, ctx, ex):
     if isinstance(ex, BotError):
-      try:
-        await ctx.respond(eat = True)
-      finally:
-        await ctx.send(ex.content, **ex.kwargs, hidden = True)
+      await ctx.send(ex.content, **ex.kwargs, hidden = True)
     elif isinstance(ex, PublicBotError):
-      try:
-        await ctx.respond()
-      finally:
-        await send_embed_channel(ctx.channel, discord.Embed(
-          title = "Error",
-          description = ex.message
-        ), ctx.author)
+      await send_embed_channel(ctx.channel, discord.Embed(
+        title = "Error",
+        description = ex.message
+      ), ctx.author)
     else:
-      try:
-        await ctx.respond()
-      finally:
-        await send_embed_channel(ctx.channel, discord.Embed(
-          title = "Uncaught Exception",
-          description = f"```{str(ex)[:1994]}```"
-        ), ctx.author)
-        raise ex
+      await send_embed_channel(ctx.channel, discord.Embed(
+        title = "Uncaught Exception",
+        description = f"```{str(ex)[:1994]}```"
+      ), ctx.author)
+      raise ex
 
 client = DiscordClient()
 slash = SlashCommand(client, sync_commands = True, delete_from_unused_guilds = True)
@@ -111,11 +102,8 @@ guilds = config["slash-command-guilds"]
 async def send_embed_channel(channel, embed, author = None, **kwargs):
   return await channel.send(embed = embed.set_footer(text = f"Requested by {author.display_name}", icon_url = author.avatar_url) if author else embed, **kwargs)
 
+# eat param only included for backwards compatibility; it doesn't do anything anymore
 async def send_embed(ctx, embed, eat = False, **kwargs):
-  try:
-    await ctx.respond(eat = eat)
-  except:
-    pass
   return await ctx.send(embed = embed.set_footer(text = f"Requested by {ctx.author.display_name}", icon_url = ctx.author.avatar_url), **kwargs)
 
 def emoji(name, default = None):

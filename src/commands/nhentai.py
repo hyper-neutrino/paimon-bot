@@ -100,7 +100,6 @@ async def nhentai_embed(ctx, nhid, force = None):
   )])
 async def nhdownload(ctx, nhid):
   ch = ctx.channel
-  await ctx.respond(True)
   await ctx.send("Fetching your doujin! This may take a minute or two.", hidden = True)
   async with ch.typing():
     doujin, urls = nhentai(nhid, True)

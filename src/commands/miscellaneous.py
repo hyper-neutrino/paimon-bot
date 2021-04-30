@@ -60,7 +60,6 @@ async def starboard(ctx, channel = None):
     required = False
   )])
 async def say(ctx, message, delay = 0):
-  await ctx.respond(True)
   await asyncio.sleep(delay)
   await ctx.send(message)
 
@@ -78,7 +77,6 @@ async def blame(ctx):
     required = True
   )])
 async def display_emoji(ctx, emoji_name):
-  await ctx.respond(True)
   await ctx.send(str(emoji(emoji_name)))
 
 @slash.slash(name = "emojilist", description = "Show which emojis I have access to", guild_ids = guilds, options = [
@@ -274,7 +272,6 @@ q = [-1, 14, 9, 0, 13, 11, 8, 5, 7, 2, 6, 4, 10, 3, 1, 12]
     ]
   )])
 async def scramble(ctx, direction):
-  await ctx.respond(True)
   d = [channel.name for channel in list(ctx.guild.text_channels)[:16]]
   k = [d[i + 1] for i in (p if direction == "forward" else q)]
   for c, n in zip(ctx.guild.text_channels, k):
@@ -301,7 +298,6 @@ async def scramble(ctx, direction):
     required = False
   )])
 async def summary(ctx, url, sentences = None, keywords = None):
-  await ctx.respond(True)
   rurl = f"https://api.smmry.com/?SM_API_KEY={config['api-keys']['sm']}"
   if sentences is not None:
     rurl += "&SM_LENGTH=" + str(sentences)
@@ -497,7 +493,6 @@ async def unpin(reaction, user):
 
 @slash.slash(name = "restar", description = "Redo every message in the starboard (in this guild)", guild_ids = guilds)
 async def restar(ctx):
-  await ctx.respond(True)
   for entry in starlinks.query.filter_by(guild = ctx.guild.id).all():
     src = await client.get_channel(entry.src_channel).fetch_message(entry.src)
     await unstar_message(src)

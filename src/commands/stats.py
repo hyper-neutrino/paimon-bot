@@ -39,7 +39,6 @@ async def sync(ctx, scope):
 
 @slash.subcommand(base = "guild", name = "stats", description = "Display message stats for the whole guild", guild_ids = guilds)
 async def guild_stats(ctx):
-  await ctx.respond(True)
   await ctx.send(content = "Fetching data; this may take a few seconds!", hidden = True)
   async with ctx.channel.typing():
     by_channel = {}
@@ -88,7 +87,6 @@ async def guild_stats(ctx):
   )])
 async def channel_stats(ctx, channel = None):
   channel = channel or ctx.channel
-  await ctx.respond(True)
   await ctx.send(content = "Fetching data; this may take a few seconds!", hidden = True)
   async with ctx.channel.typing():
     by_user = []
