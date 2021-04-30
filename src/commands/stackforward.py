@@ -15,7 +15,7 @@ def handler(room):
     else: return
     for x in e:
       if x["event_type"] == 1 and x["room_id"] == room:
-        client.loop.create_task(client.get_channel(channels[room]).send(html.unescape(f"**{x['user_name']}:** {x['content']}")))
+        client.loop.create_task(client.get_channel(channels[room]).send(html.unescape(f"**{x['user_name']}** [{x['message_id']}]: {x['content'].replace('@hyper-neutrino', '<@251082987360223233>')}")))
   return _inner
 
 chatbot = Chatbot()
