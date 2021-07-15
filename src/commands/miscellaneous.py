@@ -93,7 +93,7 @@ async def emojilist(ctx, page = 1):
     description = " ".join(str(emoji) for emoji in emojis[(page - 1) * 50 : page * 50])
   ), True)
 
-@slash.slash(name = "follow", description = "Cross-post from a channel by ID (ignores bot messages)", guild_ids = [699314655973212242, 805664230820151307], options = [
+@slash.slash(name = "follow", description = "Cross-post from a channel by ID (ignores bot messages)", guild_ids = guilds, options = [
   create_option(
     name = "channel_id",
     description = "The channel ID",
@@ -115,7 +115,7 @@ async def channel_follow(ctx, channel_id):
   else:
     raise BotError("I am already following this channel!")
 
-@slash.slash(name = "unfollow", description = "Stop following a channel (takes an ID)", guild_ids = [699314655973212242, 805664230820151307], options = [
+@slash.slash(name = "unfollow", description = "Stop following a channel (takes an ID)", guild_ids = guilds, options = [
   create_option(
     name = "channel_id",
     description = "The channel ID",

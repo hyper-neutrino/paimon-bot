@@ -3,8 +3,10 @@ import json, datetime, re
 from client import *
 from display import *
 
-with open("config/genshin.json", "r") as f:
-  genshin_data = json.load(f)
+# with open("config/genshin.json", "r") as f:
+#   genshin_data = json.load(f)
+
+genshin_data = {}
 
 def emojilist(key, count, sep = None):
   a = [emoji(key + str(i)) for i in range(1, count + 1)]

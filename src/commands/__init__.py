@@ -1,7 +1,7 @@
-from .anagram       import *
+# from .anagram       import *
 from .genshin       import *
 from .info          import *
-from .league        import *
+# from .league        import *
 from .logging       import *
 from .miscellaneous import *
 from .nhentai       import *

@@ -95,8 +95,8 @@ class DiscordClient(discord.Client):
 client = DiscordClient()
 slash = SlashCommand(client, sync_commands = True, delete_from_unused_guilds = True)
 
-# guilds = []
-guilds = config["slash-command-guilds"]
+guilds = []
+# guilds = config["slash-command-guilds"]
 # guilds = None
 
 async def send_embed_channel(channel, embed, author = None, **kwargs):
