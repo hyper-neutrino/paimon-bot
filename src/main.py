@@ -10,6 +10,17 @@ def save():
 def safe_eval(regex):
     return eval('"' + regex.replace('"', '\\"') + '"')
 
+def gr():
+    r = requests.get("https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact")
+
+    stars = re.search("Rated (\\S+) stars out of five stars", r.text).group(1)
+
+    ratings = list(map(int, re.findall("mMF0fd.+?(\\d+)%", r.text)[1:]))
+    s = sum(ratings)
+    ratings = [r * 100 // s for r in ratings]
+
+    return stars, ratings
+
 class DiscordClient(discord.Client):
     def __init__(self):
         discord.Client.__init__(self, intents = discord.Intents.all())
@@ -18,7 +29,12 @@ class DiscordClient(discord.Client):
         print("PAIMON has started.")
 
     async def on_message(self, message):
-        if message == "FORCE KILL":
+        if message.content == "genshin ratings":
+            stars, ratings = gr()
+            await message.delete()
+            await message.channel.send("```\nGenshin Impact: " + str(stars) + " / 5 stars\n" + " ・ ".join(f"{5 - i}⭐: {x}%" for i, x in enumerate(ratings)) + "\n(Requested by " + message.author.display_name + " - use \"genshin ratings\" to view this data)\n```")
+            return
+        if message.content == "FORCE KILL":
             if message.author.id == self.user.id:
                 await message.channel.send("Goodbye, cruel world.")
             exit(0)
